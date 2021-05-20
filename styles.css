@@ -1,1 +1,10 @@
 /*Have products laid out and when user hovers over show the description of the product */
+.shopping-cart {
+    background-color: red;
+    width: 60vw;
+    height: 60vh;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 3;
+}

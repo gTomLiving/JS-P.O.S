@@ -12,52 +12,24 @@ let addToCart = document.querySelectorAll(".addToCart");
 let newTotal = 0;
 
 
-// make objects based on addToCart clicks
-// let name
-// function makeItemForCart(name, quantity, price){
-//     name = this.name;
-//     quantity = 1;
-//     price = this.price
-// }
-
-
-// things on cards that we'll need
-// let price = 
-
 // add to cart process
 let right = document.querySelector(".right");
 let productCards = document.querySelectorAll(".products-card");
-//let cart = [];
-// let cartObject = {name: "thing",
-//                   quantity: 1,
-//                   price: 0
-// }
-// console.log(cart);
-// let cart = [];
 
-// function Item(name, price, count) {
-//     this.name = name;
-//     this.price = price;
-//     this.count = count;
-//   }
-
-//   obj.addItemToCart = function(name, price, count) {
-//     for(var item in cart) {
-//       if(cart[item].name === name) {
-//         cart[item].count ++;
-//         return;
-//       }
-//     }
-//     var item = new Item(name, price, count);
-//     cart.push(item);
-//   }
+let cart = [];
 
 
 right.addEventListener("click", (event) => {
     if (event.target.classList.contains("add-to-cart")){
         const addPrice = event.target.getAttribute("data-price")
         const addName = event.target.getAttribute("data-name");
-    
+    let newCartObject = {}
+        newCartObject.name = addName;
+        newCartObject.price = addPrice;
+        console.log(newCartObject);
+        cart.push(newCartObject);
+        console.log(cart);
+  
     //new cartObject
 
     newTotal += parseInt(addPrice) / 100;

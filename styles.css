@@ -1,5 +1,10 @@
 /*Have products laid out and when user hovers over show the description of the product */
+.hidden {
+    display: none;
+}
+
 .shopping-cart {
+    display: flex;
     background-color: red;
     width: 60vw;
     height: 60vh;
@@ -7,4 +12,17 @@
     right: 0;
     top: 0;
     z-index: 3;
+}
+
+
+.cart-product-name .cart-change-quantity .cart-product-price {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.cart-totals {
+    position: absolute;
+    bottom: 0;
+    right: 15%;
 }

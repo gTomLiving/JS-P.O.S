@@ -16,7 +16,37 @@ let newTotal = 0;
 let right = document.querySelector(".right");
 let productCards = document.querySelectorAll(".products-card");
 
+// add to cart visual representation variables
 let cart = [];
+const shoppingCart = document.querySelector(".shopping-cart");
+let cartWrapper = document.querySelector(".cart-wrapper");
+let cartNameHolder = document.querySelector(".cart-product-name");
+let cartQuantityHolder = document. querySelector(".cart-change-quanity");
+let cartProductPriceHolder = document.querySelector(".cart-product-price");
+
+// add to cart visual representation wiring
+
+// create p tag to insert item.name et al
+viewCart.addEventListener("click", (event) => {
+    for (item of cart){
+        let cartItemNameDisplay = document.createElement("p");
+        cartItemNameDisplay.innerText = item.name;
+        cartNameHolder.appendChild(cartItemNameDisplay);
+        
+        let cartQuantityHolder = "something to fix";
+
+        let cartPriceDisplay = document.createElement("p");
+        cartPriceDisplay.innerText = item.price;
+        cartProductPriceHolder.appendChild(cartPriceDisplay);
+    }
+    shoppingCart.toggle("hidden")
+});
+
+
+
+
+
+
 
 
 right.addEventListener("click", (event) => {
@@ -26,7 +56,6 @@ right.addEventListener("click", (event) => {
     let newCartObject = {}
         newCartObject.name = addName;
         newCartObject.price = addPrice;
-        console.log(newCartObject);
         cart.push(newCartObject);
         console.log(cart);
   

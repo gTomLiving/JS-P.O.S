@@ -26,3 +26,45 @@
     bottom: 0;
     right: 15%;
 }
+
+
+
+
+
+
+/* LEAVE AT BOTTOM --- IMPORTS ICONS */
+/* This .ib class includes the minimum necessary CSS properties for icon display
+ * Additional size, transform and animation classes are available in icon-blender.css
+ * Available from https://github.com/icon-blender/icon-blender
+ */
+
+ .ib::before{
+	display: inline-block;
+	height: 1em;
+	width: 1em;
+	background: currentColor;
+	vertical-align: -.125em;
+	mask-image: var(--url);
+	mask-repeat: no-repeat;
+	mask-position: center;
+	-webkit-mask-image: var(--url);
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-position: center;
+	content:'';
+}
+
+/* Icon: mdi-arrow-left-circle
+ * License: Open Font License
+ * Html: <i class="ib ib-mdi-arrow-left-circle"></i>
+ */
+.ib-mdi-arrow-left-circle{
+	--url: url('data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"%3e%3cpath d="M2 12A10 10 0 0 1 12 2a10 10 0 0 1 10 10a10 10 0 0 1-10 10A10 10 0 0 1 2 12m16-1h-8l3.5-3.5l-1.42-1.42L6.16 12l5.92 5.92l1.42-1.42L10 13h8v-2z" fill="currentColor"/%3e%3c/svg%3e');
+}
+
+/* Icon: mdi-arrow-right-circle
+ * License: Open Font License
+ * Html: <i class="ib ib-mdi-arrow-right-circle"></i>
+ */
+.ib-mdi-arrow-right-circle{
+	--url: url('data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"%3e%3cpath d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5l1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5L14 11H6v2z" fill="currentColor"/%3e%3c/svg%3e');
+}

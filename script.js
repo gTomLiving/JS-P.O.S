@@ -18,59 +18,76 @@ let productCards = document.querySelectorAll(".products-card");
 
 // add to cart visual representation variables
 let cart = [];
-const shoppingCart = document.querySelector(".shopping-cart");
+let cartSubTotal = document.querySelector(".cart-sub-total");
+let cartTax = document.querySelector(".cart-tax");
+let cartTotal = document.querySelector(".cart-total")
 let cartWrapper = document.querySelector(".cart-wrapper");
 let cartNameHolder = document.querySelector(".cart-product-name");
 let cartQuantityHolder = document. querySelector(".cart-change-quanity");
 let cartProductPriceHolder = document.querySelector(".cart-product-price");
-
+const shoppingCart = document.querySelector(".hidden");
 // add to cart visual representation wiring
 
-// create p tag to insert item.name et al
+// toggles shopping cart view
 viewCart.addEventListener("click", (event) => {
-    for (item of cart){
-        let cartItemNameDisplay = document.createElement("p");
-        cartItemNameDisplay.innerText = item.name;
-        cartNameHolder.appendChild(cartItemNameDisplay);
-        
-        let cartQuantityHolder = "something to fix";
-
-        let cartPriceDisplay = document.createElement("p");
-        cartPriceDisplay.innerText = item.price;
-        cartProductPriceHolder.appendChild(cartPriceDisplay);
-    }
-    shoppingCart.toggle("hidden")
+    event.preventDefault();
+    let cartToggle = () => shoppingCart.classList.toggle("shopping-cart");
+    cartToggle();
 });
 
 
-
-
-
-
-
-
+// add to cart event
 right.addEventListener("click", (event) => {
     if (event.target.classList.contains("add-to-cart")){
         const addPrice = event.target.getAttribute("data-price")
         const addName = event.target.getAttribute("data-name");
-    let newCartObject = {}
-        newCartObject.name = addName;
-        newCartObject.price = addPrice;
-        cart.push(newCartObject);
-        console.log(cart);
-  
-    //new cartObject
-
-    newTotal += parseInt(addPrice) / 100;
-    let taxTotal = .06 * newTotal;
-    let grandTotal = newTotal + taxTotal;
-
-
-    // grab selected item
+        let newCartObject = {}
+            newCartObject.name = addName;
+            newCartObject.price = addPrice;
+            // placeholder below --- needs wiring
+            newCartObject.quanity = 1;
+            cart.push(newCartObject);
+            console.log(cart);
     
-        subTotal.innerText = `subtotal: ${newTotal}`;
-        tax.innerText = `Tax: ${taxTotal}`;
-        total.innerText = `Total ${grandTotal}`;
+        // increase quantity for item multiples
+        if (addName === cart[newCartObject.name]){
+            console.log("same name");
+            newCartObject.quantity++;
+            // add newCartQuantity to newCartObject?
+        }
+
+        // generate name box
+        let cartItemNameDisplay = document.createElement("p");
+        cartItemNameDisplay.innerText = addName;
+        cartNameHolder.appendChild(cartItemNameDisplay);
+
+         // generate quantity box
+         let cartQuantityContainer = document.querySelector(".cart-change-quantity-container");
+         let cartQuantity = document.querySelector(".cart-change-quantity");
+         let quantityBox = cartQuantity.cloneNode(true);
+         cartQuantityContainer.appendChild(quantityBox);
+
+        // generate price box
+        let cartPriceDisplay = document.createElement("p");
+        cartPriceDisplay.innerText = `$${addPrice / 100}`;
+        cartProductPriceHolder.appendChild(cartPriceDisplay); 
+
+        newTotal += parseInt(addPrice) / 100;
+        let taxTotal = .06 * newTotal;
+        let grandTotal = newTotal + taxTotal;
+
+        // All totals display
+        subTotal.innerText = `Subtotal: $${newTotal}`;
+        tax.innerText = `Tax: $${taxTotal}`;
+        total.innerText = `Total $${grandTotal}`;
+        cartSubTotal.innerText = `Subtotal: $${newTotal}`;
+        cartTax.innerText = `Tax: $${taxTotal}`;
+        cartTotal.innerText = `Total $${grandTotal}`;
+
+
+    
+    
+        
 
     }
     // add slected item Name & price to cart

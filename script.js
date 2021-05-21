@@ -45,16 +45,31 @@ right.addEventListener("click", (event) => {
             newCartObject.name = addName;
             newCartObject.price = addPrice;
             // placeholder below --- needs wiring
-            newCartObject.quanity = 1;
-            cart.push(newCartObject);
+            let alreadyInCart = false;
+            for (item of cart){
+                if (addName === item.name){
+                    alreadyInCart = true
+                    item.quantity++;
+                    break;
+                };
+            }
+            
+            if (alreadyInCart == false){
+                newCartObject.quantity = 1;
+                cart.push(newCartObject);
+                
+            };
             console.log(cart);
-    
         // increase quantity for item multiples
-        if (addName === cart[newCartObject.name]){
-            console.log("same name");
-            newCartObject.quantity++;
-            // add newCartQuantity to newCartObject?
-        }
+        
+
+        // NEEDS FURTHER WIRING AND INSPECTION
+    //     let i = document.getElementByClass("cart-product-quantity").innerText;
+    //     function addtocart() {
+    //       i++;
+    //     document.getElementByClass(' cart-product-quantity ').innerText = i;
+    // }
+
 
         // generate name box
         let cartItemNameDisplay = document.createElement("p");
@@ -78,7 +93,7 @@ right.addEventListener("click", (event) => {
 
         // All totals display
         subTotal.innerText = `Subtotal: $${newTotal}`;
-        tax.innerText = `Tax: $${taxTotal}`;
+        tax.innerText = `Tax: $${taxTotal.toFixed(2)}`;
         total.innerText = `Total $${grandTotal}`;
         cartSubTotal.innerText = `Subtotal: $${newTotal}`;
         cartTax.innerText = `Tax: $${taxTotal}`;
@@ -93,5 +108,48 @@ right.addEventListener("click", (event) => {
     // add slected item Name & price to cart
 
 })
+
+// CARD VALIDATION???
+// function validateCardNumber(number) {
+//     var regex = new RegExp("^[0-9]{16}$");
+//     if (!regex.test(number))
+//         return false;
+
+//     return luhnCheck(number);
+// }
+
+// function luhnCheck(val) {
+//     var sum = 0;
+//     for (var i = 0; i < val.length; i++) {
+//         var intVal = parseInt(val.substr(i, 1));
+//         if (i % 2 == 0) {
+//             intVal *= 2;
+//             if (intVal > 9) {
+//                 intVal = 1 + (intVal % 10);
+//             }
+//         }
+//         sum += intVal;
+//     }
+//     return (sum % 10) == 0;
+// }
+
+// ALTERNATE CC VAL?
+// function validate_creditcardnumber()
+// {
+
+// let re16digit=/^\d{16}$/
+// if (document.myform.CreditCardNumber.value.search(re16digit)==-1)
+// alert("Please enter your 16 digit credit card numbers");
+// return false;
+
+// }
+
+// document.myform.CreditCardNumber.onchange = validate_creditcardnumber;
+
+// <form name="myform">
+//     <input name="CreditCardNumber" />
+// </form>
+
+
 
 

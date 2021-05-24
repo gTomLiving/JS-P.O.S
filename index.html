@@ -12,155 +12,153 @@
 <body>
     
     <div class="main">
-        <div class="left"> 
-            <h1>History Menu </h1>
-                <div class="checkout-total">
-                    <h2 class="sub-total">sub-total</h2>
-                    <h2 class="tax">Tax</h2>
-                    <h2 class="total">Total</h2>
+        <div class="left">
+            <div class="store-name-box"> 
+                <h1 id="store-name">History Menu</h1>
+            </div>
+            <div class="view-cart">
+                <a href="#" ><img class="cart-image" src="./images-final/shopping-cart-icon.svg" alt="cart-image"></a>
+                <a href="#"> <View class="view-cart-text">View Cart</h4></a>
+            </div>   
+                <div class="check-out-totals">
+                    <h2 class="sub-total">Subtotal:</h2>
+                    <h2 class="tax">Tax:</h2>
+                    <h2 class="total">Total:</h2>
                 </div>
-                <button class="view-cart">Shopping Cart</button>
-
         </div>
         
         
         
-        <div class="right">
-            <h2>Item list</h2>
+        <div class="right disable-scrollbars">
+            <h2 class="products-header">Inventory</h2>
         
-            <section class="row-one"> 
-                <div class="products-card dead">
-                    <h2 class="card-heading">The Dead Sea Scrolls</h2>
-                        <img class="card-image" src="images//dead-sea-scrolls-removebg-preview.png" alt="dead sea scrolls">
-                            <h3 class="price">1.50</h3>
-                                <button type="button" class="add-to-cart" data-price="150" data-name="The Dead Sea Scrolls">Add to Cart</button>
-                                    <p class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                        Voluptatibus quae expedita eveniet minus nulla adipisci corporis.
-                                    </p>
+            <section class="row-one">
+                <h1 class="categories">Languages of the Lost</h1> 
+                <div class="products-card">
+                    <h2 class="card-header">Dead Sea Scrolls</h2>
+                    <img class="card-image" src="./images-final/scrolls-resize-no-ratio.jpg" alt="dead sea scrolls">
+                    <h3 class="card-price">$1.50</h3>
+                    <button type="button" class="add-to-cart-button" data-price="150" data-name="The Dead Sea Scrolls">Add to Cart</button>
+                    <div class="description-box">
+                        <h5 id="description-header">Description</h5>
+                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quia inventore quisquam quod repudiandae necessitatibus molestias. Alias vero beatae sed. Ut aliquam dolor sed blanditiis ipsam vel veniam rem cupiditate?</p>
+                    </div>
                 </div>
-                <div class="products-card rosetta">
-                    <h2 class="card-heading">Rosetta Stone</h2>
-                        <img class="card-image" src="images/stone-removebg-preview.svg" alt="rosetta stone">
-                            <h3 class="price">2.50</h3>
-                            <button type="button" class="add-to-cart" data-price="250" data-name="Rosetta Stone">Add to Cart</button>                                    
-                                    <p class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                        Voluptatibus quae expedita eveniet minus nulla adipisci corporis.
-                                    </p>
+                <div class="products-card">
+                    <h2 class="card-header">Rosetta Stone</h2>
+                    <img class="card-image" src="./images-final/rosetta-resize.jpg" alt="rosetta stone">
+                    <h3 class="card-price">2.50</h3>
+                    <button type="button" class="add-to-cart-button" data-price="250" data-name="Rosetta Stone">Add to Cart</button>                                    
+                    <div class="description-box">
+                        <h5 id="description-header">Description</h5>
+                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quia inventore quisquam quod repudiandae necessitatibus molestias. Alias vero beatae sed. Ut aliquam dolor sed blanditiis ipsam vel veniam rem cupiditate?</p>
+                    </div>
                 </div>
 
 
             </section>
 
-            <section class="row-two"> 
+            <section class="row-two">
+                <h1 class="categories">Weapons of the Ancients</h1> 
                 <div class="products-card thor">
-                    <h2 class="card-heading">Thor's Hammer</h2>
-                        <img class="card-image" src="images/Thor-removebg-preview.png" alt="thor hammer">
-                            <h3 class="price">5.50</h3>
-                            <button type="button" class="add-to-cart" data-price="550" data-name="Thor's Hammer">Add to Cart</button>                                    
-                                    <p class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                        Voluptatibus quae expedita eveniet minus nulla adipisci corporis.
-                                    </p>
+                    <h2 class="card-header">Thor's Hammer</h2>
+                    <img class="card-image" src="./images-final/hammer-resize-no-aspect-ratio.jpg" alt="thor hammer">
+                    <h3 class="card-price">5.50</h3>
+                    <button type="button" class="add-to-cart-button" data-price="550" data-name="Thor's Hammer">Add to Cart</button>                                    
+                    <div class="description-box">
+                        <h5 id="description-header">Description</h5>
+                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quia inventore quisquam quod repudiandae necessitatibus molestias. Alias vero beatae sed. Ut aliquam dolor sed blanditiis ipsam vel veniam rem cupiditate?</p>
+                    </div>    
                 </div>
                 <div class="products-card stick">
-                    <h2 class="card-heading">Stick with Nails</h2>
-                        <img class="card-image" src="images/Stick-removebg-preview.svg" alt="stick with nails">
-                            <h3 class="price">1.50</h3>
-                            <button type="button" class="add-to-cart" data-price="150" data-name="Stick with Nails">Add to Cart</button>                                    
-                                    <p class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                            Voluptatibus quae expedita eveniet minus nulla adipisci corporis.
-                                    </p>
+                    <h2 class="card-header">Stick with Nails</h2>
+                        <img class="card-image" src="./images-final/stick-with-nails-resize-no-ap.jpg" alt="stick with nails">
+                        <h3 class="card-price">1.50</h3>
+                        <button type="button" class="add-to-cart-button" data-price="150" data-name="Stick with Nails">Add to Cart</button>                                    
+                        <div class="description-box">
+                            <h5 id="description-header">Description</h5>
+                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quia inventore quisquam quod repudiandae necessitatibus molestias. Alias vero beatae sed. Ut aliquam dolor sed blanditiis ipsam vel veniam rem cupiditate?</p>
+                        </div>
                 </div>
 
             </section>
         
         
             <section class="row-three"> 
+                <h1 class="categories">Strength or Dex?</h1>
                 <div class="products-card armor">
-                    <h2 class="card-heading">Suit of Armor</h2>
-                        <img class="card-image" src="images/knights-who-say-ni.png" alt="suit of armor">
-                            <h3 class="price">1.50</h3>
-                            <button type="button" class="add-to-cart" data-price="250" data-name="Suit of Armor">Add to Cart</button>                                    
-                                    <p class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                        Voluptatibus quae expedita eveniet minus nulla adipisci corporis.
-                                    </p> 
+                    <h2 class="card-header">Suit of Armor</h2>
+                        <img class="card-image" src="./images-final/armor-resize-no-ap.jpg" alt="suit of armor">
+                        <h3 class="card-price">1.50</h3>
+                        <button type="button" class="add-to-cart-button" data-price="250" data-name="Suit of Armor">Add to Cart</button>                                    
+                        <div class="description-box">
+                            <h5 id="description-header">Description</h5>
+                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quia inventore quisquam quod repudiandae necessitatibus molestias. Alias vero beatae sed. Ut aliquam dolor sed blanditiis ipsam vel veniam rem cupiditate?</p>
+                        </div> 
                 </div>
                 <div class="products-card loin">
-                    <h2 class="card-heading">Loincloth</h2>
-                        <img class="card-image" src="images/Loin-removebg-preview.svg" alt="loincloth">
-                            <h3 class="price">1.50</h>
-                                <button type="button" class="add-to-cart" data-price="250" data-name="Loincloth">Add to Cart</button>                                    
-                                    <p class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                        Voluptatibus quae expedita eveniet minus nulla adipisci corporis.
-                                    </p> 
+                    <h2 class="card-header">Loincloth</h2>
+                    <img class="card-image" src="./images-final/loin-cloth-crop-no-ap.jpg" alt="loincloth">
+                        <h3 class="card-price">1.50</h3>
+                        <button type="button" class="add-to-cart-button" data-price="250" data-name="Loincloth">Add to Cart</button>                                    
+                        <div class="description-box">
+                            <h5 id="description-header">Description</h5>
+                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quia inventore quisquam quod repudiandae necessitatibus molestias. Alias vero beatae sed. Ut aliquam dolor sed blanditiis ipsam vel veniam rem cupiditate?</p>
+                        </div>
                 </div>
             </section>
             
             <section class="row-four"> 
+                <h1 class="categories">Yesteryear's EVs</h1>
                 <div class="products-card mule">
-                    <h2 class="card-heading">Mule and Buggy</h2>
-                        <img class="card-image" src="images/carriage-removebg-preview.svg" alt="mule and buggy">
-                            <h3 class="price">1.50</h3>
-                            <button type="button" class="add-to-cart" data-price="150" data-name="Mule and Buggy">Add to Cart</button>                                    
-                                    <p class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                        Voluptatibus quae expedita eveniet minus nulla adipisci corporis.
-                                    </p> 
+                    <h2 class="card-header">Mule and Buggy</h2>
+                    <img class="card-image" src="./images-final/mule-no-ap.jpg" alt="mule and buggy">
+                    <h3 class="card-price">1.50</h3>
+                    <button type="button" class="add-to-cart-button" data-price="150" data-name="Mule and Buggy">Add to Cart</button>                                    
+                    <div class="description-box">
+                        <h5 id="description-header">Description</h5>
+                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quia inventore quisquam quod repudiandae necessitatibus molestias. Alias vero beatae sed. Ut aliquam dolor sed blanditiis ipsam vel veniam rem cupiditate?</p>
+                    </div> 
                 </div>
                 <div class="products-card royal">
-                    <h2 class="card-heading">Royal Carriage</h2>
-                        <img class="card-image" src="images/Royal-carriage-removebg-preview.svg" alt="royal carriage">
-                            <h3 class="price">2.50</h3>
-                            <button type="button" class="add-to-cart" data-price="250" data-name="Royal Carriage">Add to Cart</button>                                    
-                                    <p class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                        Voluptatibus quae expedita eveniet minus nulla adipisci corporis.
-                                    </p>
+                    <h2 class="card-header">Royal Carriage</h2>
+                    <img class="card-image" src="./images-final/carriage-no-ap.jpg" alt="royal carriage">
+                    <h3 class="card-price">2.50</h3>
+                    <button type="button" class="add-to-cart-button" data-price="250" data-name="Royal Carriage">Add to Cart</button>                                    
+                    <div class="description-box">
+                        <h5 id="description-header">Description</h5>
+                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quia inventore quisquam quod repudiandae necessitatibus molestias. Alias vero beatae sed. Ut aliquam dolor sed blanditiis ipsam vel veniam rem cupiditate?</p>
+                    </div>
                 </div>
             </section>
         
         
-            <section class="row-five"> 
+            <section class="row-five">
+                <h1 class="categories">Homey Hovels</h1> 
                 <div class="products-card castle">
-                    <h2 class="card-heading">Castle</h2>
-                        <img class="card-image" src="images/castlebackup.svg" alt="castle">
-                            <h3 class="price">10.50</h3>
-                            <button type="button" class="add-to-cart" data-price="1050" data-name="Castle">Add to Cart</button>                                    
-                                    <p class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                        Voluptatibus quae expedita eveniet minus nulla adipisci corporis.
-                                    </p>
+                    <h2 class="card-header">Castle</h2>
+                    <img class="card-image" src="./images-final/castle-no-ap.jpg" alt="castle">
+                    <h3 class="card-price">10.50</h3>
+                    <button type="button" class="add-to-cart-button" data-price="1050" data-name="Castle">Add to Cart</button>                                    
+                    <div class="description-box">
+                        <h5 id="description-header">Description</h5>
+                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quia inventore quisquam quod repudiandae necessitatibus molestias. Alias vero beatae sed. Ut aliquam dolor sed blanditiis ipsam vel veniam rem cupiditate?</p>
+                    </div>
                 </div>
                 <div class="products-card mushroom">
-                        <h2 class="card-heading">Mushroom Home</h2>   
-                            <img class="card-image" src="images/mushroom-removebg-preview.svg" alt="mushroom home">  
-                            <h3 class="price">4.50</h3>
-                            <button type="button" class="add-to-cart" data-price="450" data-name="Mushroom Home">Add to Cart</button>                                    
-                                    <p class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                        Voluptatibus quae expedita eveniet minus nulla adipisci corporis.
-                                    </p>
+                    <h2 class="card-header">Mushroom House</h2>   
+                    <img class="card-image" src="./images-final/mushroom1-no-ap.jpg" alt="mushroom home">  
+                    <h3 class="card-price">4.50</h3>
+                    <button type="button" class="add-to-cart-button" data-price="450" data-name="Mushroom Home">Add to Cart</button>                                    
+                    <div class="description-box">
+                        <h5 id="description-header">Description</h5>
+                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quia inventore quisquam quod repudiandae necessitatibus molestias. Alias vero beatae sed. Ut aliquam dolor sed blanditiis ipsam vel veniam rem cupiditate?</p>
+                    </div>
                 </div>
             </section>
-            <!-- Shopping Cart -->
-            <div class="hidden">
             
-                <h1 class="cart-header">Shopping Cart</h1>
-                
-                <div class="cart-wrapper">
-                    <div class="cart-product-name"></div>
-                    <div class="cart-change-quantity-container">
-                        <div class="cart-change-quantity">
-                            <i class="ib ib-mdi-arrow-left-circle subtract"></i>
-                            <span class="cart-product-quantity">1</span>
-                            <i class="ib ib-mdi-arrow-right-circle add"></i>
-                        </div>
-                    </div>
-                    <div class="cart-product-price"></div>
-                </div>
-                
-                
-                <div class="cart-totals">
-                    <h3 class="cart-sub-total">Subtotal:</h3>
-                    <h3 class="cart-tax">Sales Tax:</h3>
-                    <h2 class="cart-total">Total:</h2>
-                </div>
-            </div> 
+    
+         
         </div>
 
 
@@ -168,6 +166,53 @@
 
 
     </div>
+    <!-- shopping cart to toggle -->
+    <div class="hidden">
+        <h1 class="cart-header">Shopping Cart</h1>
+        
+        <div class="cart-wrapper">
+            <div class="cart-product-name"></div>
+            <div class="cart-change-quantity-container"></div>
+            <div class="cart-product-price"></div>
+        </div>
+        
+        
+        <div class="cart-totals">
+            <h3 class="cart-sub-total">Subtotal:</h3>
+            <h3 class="cart-tax">Sales Tax:</h3>
+            <h2 class="cart-total">Total:</h2>
+        </div>
+            <button class="check-out-button" type="button">Check Out</button>
+            <p class="back-to-store">Back to Store</p>
+    </div>
+
+    <!-- checkout menu to toggle -->
+    <div class="checkout-hidden">  
+        <form>
+            <div class="final-check-out-totals">
+                <h1 class="final-check-out-total">Total:</h1>
+                <h2 class="final-check-out-tax">Tax:</h2>
+                <h2 class="final-check-out-subtotal">Subtotal:</h2>
+            </div>
+            <div class="tender-type-box">
+                <for= id="tender-type" for="tender-type">Tender Type:</label>
+            </div>
+            <div class="tender-type-cash">
+                <label for="cash">Cash:</label><br>
+                <input type="number" id="cash" name="cash" placeholder="$0.00">
+                <button class="change-button" type="button">Enter</button> <br>
+                <p class="change">Change: $0</p>
+            </div>
+            <div class="tender-type-card">
+                <label for="card">Card Number:</label><br>
+                <input type="number" id="card" name="card" placeholder="000000000000000000"><br>
+                <label for="cvv" id="cvv-label">CVV:</label><br>
+                <input type="number" id="cvv" name="cvv" placeholder="000"><br>
+            </div>
+            <button class="final-check-out-button" type="submit">Submit Payment</button>
+            <p class="back-to-cart">Back to Store</p>
+
+        </form>
 
     <!-- CARD PAYMENT CODE TO TEST -->
     <!-- <div class="col-50">

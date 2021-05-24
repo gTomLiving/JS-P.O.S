@@ -16,98 +16,260 @@ let newTotal = 0;
 let right = document.querySelector(".right");
 let productCards = document.querySelectorAll(".products-card");
 
-// add to cart visual representation variables
+// add to cart visual representation variables for overlay
 let cart = [];
 let cartSubTotal = document.querySelector(".cart-sub-total");
 let cartTax = document.querySelector(".cart-tax");
 let cartTotal = document.querySelector(".cart-total")
 let cartWrapper = document.querySelector(".cart-wrapper");
 let cartNameHolder = document.querySelector(".cart-product-name");
+let cartNameHolderArray = document.querySelectorAll(".cart-product-name");
 let cartQuantityHolder = document. querySelector(".cart-change-quanity");
 let cartProductPriceHolder = document.querySelector(".cart-product-price");
-const shoppingCart = document.querySelector(".hidden");
-// add to cart visual representation wiring
+let cartProductQuantity = document.querySelector(".cart-product-quantity");
+let cartPriceDisplay = document.createElement("p");
 
-// toggles shopping cart view
+// cart quantity container variables
+let cartQuantityContainer = document.querySelector(".cart-change-quantity-container");
+const shoppingCart = document.querySelector(".hidden");
+let cartQuantity = document.querySelector(".cart-change-quantity");
+
+// checkout menu total displays
+const checkoutMenu = document.querySelector(".checkout-hidden");
+let checkOutTotalDisplay = document.querySelector(".final-check-out-total");
+let checkOutTaxDisplay = document.querySelector(".final-check-out-tax");
+let checkOutSubtotalDisplay = document.querySelector(".final-check-out-subtotal");
+let checkOutCashInput = document.querySelector("#cash");
+let checkOutChangeDisplay = document.querySelector(".change");
+
+
+
+// toggles checkoutmenu visibility
+shoppingCart.addEventListener("click", (event) => {
+    if (event.target.classList.contains("check-out-button")){
+        checkoutMenu.classList.toggle("check-out-menu");
+    };
+
+    if (event.target.classList.contains("back-to-store")){
+        console.log("cart");
+        shoppingCart.classList.toggle("shopping-cart");
+    };
+
+    // TODO Figure out how to make add subtract quantity buttons work -- maybe change event target focus to larger? does shopping cart z index affect?
+    if (event.target.classList.contains("subtract")){
+            
+        console.log("trying to subtract");
+    };
+
+    if (event.target.classList.contains("add")){
+        console.log("trying to add")
+    };
+})
+
+// toggles shopping cart visibility
 viewCart.addEventListener("click", (event) => {
     event.preventDefault();
     let cartToggle = () => shoppingCart.classList.toggle("shopping-cart");
     cartToggle();
 });
 
+//checkout menu functionality
+checkoutMenu.addEventListener("click", (event) => {
+    // displays accurate change in checkout menu based on user input
+    if (event.target.classList.contains("change-button")){
+        let newTotal = 0;
+        for (item of cart){
+            newTotal += (((parseInt(item.price) * item.quantity) / 100) * 1.06);
+            console.log(newTotal);
+            let cashGiven = checkOutCashInput.value;
+            console.log(checkOutCashInput.value);
+            let changeDisplay = cashGiven - newTotal;
+            console.log(changeDisplay);
+            checkOutChangeDisplay.innerText = `Change: $${changeDisplay.toFixed(2)}`;
+
+        };
+    };
+    if (event.target.classList.contains("back-to-cart")){
+        console.log("yo");
+        checkoutMenu.classList.toggle("check-out-menu");
+        shoppingCart.classList.toggle("shopping-cart");
+    };
+});
 
 // add to cart event
 right.addEventListener("click", (event) => {
-    if (event.target.classList.contains("add-to-cart")){
-        const addPrice = event.target.getAttribute("data-price")
-        const addName = event.target.getAttribute("data-name");
+    if (event.target.classList.contains("add-to-cart-button")){
+        let addPrice = parseInt(event.target.getAttribute("data-price"));
+        let addName = event.target.getAttribute("data-name");
+       
+        // creating new object for cart array
         let newCartObject = {}
-            newCartObject.name = addName;
-            newCartObject.price = addPrice;
-            // placeholder below --- needs wiring
-            let alreadyInCart = false;
+        newCartObject.name = addName;
+        newCartObject.price = addPrice;
+        newCartObject.quantity = 1;
+        
+        // increase quantity for item multiples in cart array
+        // also prevents from creating new cart array object
+         let alreadyInCart = false;
+
+        // GENERATE QUANTITY BOXES FOR SHOPPING CART
+        // create quantity box variables && appends for shopping cart display
+         let createBox = document.createElement("div");
+         createBox.setAttribute("class", "cart-change-quantity");
+
+        // add left arrow to box
+        let leftArrow = document.createElement("i");
+        leftArrow.setAttribute("class", "ib ib-mdi-arrow-left-circle subtract");
+        createBox.appendChild(leftArrow);
+
+        // add quantity box to box
+        let cartProductQuantityCreator = document.createElement("span");
+        cartProductQuantityCreator.setAttribute("class", "cart-product-quantity");
+        cartProductQuantityCreator.innerText = newCartObject.quantity;
+        createBox.appendChild(cartProductQuantityCreator);
+
+        // add right arrow to box
+        let rightArrow = document.createElement("i");
+        rightArrow.setAttribute("class", "ib ib-mdi-arrow-right-circle add");
+        createBox.appendChild(rightArrow);    
+
+            // updates cart values for repeat items without creating new line
             for (item of cart){
                 if (addName === item.name){
                     alreadyInCart = true
                     item.quantity++;
+                    let newItemPrice = parseInt(item.quantity) * parseInt(addPrice / 100).toFixed(2);
+
+                    // ****ASK KYLE WHY CART QUANTITY BOX WON"T UPDATE****
+                    // console.log(cartProductQuantity);
+                    // cartProductQuantity.innerText = item.quantity;
+                        
+                    
+                    cartPriceDisplay.innerText = `$${newItemPrice.toFixed(2)}`;
+                    // updating total on checkout display
+                    checkOutTotalDisplay.innerText = cartPriceDisplay.innerText;
                     break;
-                };
-            }
-            
+                };        
+            };       
+    
             if (alreadyInCart == false){
-                newCartObject.quantity = 1;
-                cart.push(newCartObject);
-                
-            };
-            console.log(cart);
-        // increase quantity for item multiples
+                // insert quantity boxes into shopping cart
+                cartQuantityContainer.appendChild(createBox);      
         
-
-        // NEEDS FURTHER WIRING AND INSPECTION
-    //     let i = document.getElementByClass("cart-product-quantity").innerText;
-    //     function addtocart() {
-    //       i++;
-    //     document.getElementByClass(' cart-product-quantity ').innerText = i;
-    // }
-
-
-        // generate name box
-        let cartItemNameDisplay = document.createElement("p");
-        cartItemNameDisplay.innerText = addName;
-        cartNameHolder.appendChild(cartItemNameDisplay);
-
-         // generate quantity box
-         let cartQuantityContainer = document.querySelector(".cart-change-quantity-container");
-         let cartQuantity = document.querySelector(".cart-change-quantity");
-         let quantityBox = cartQuantity.cloneNode(true);
-         cartQuantityContainer.appendChild(quantityBox);
-
-        // generate price box
-        let cartPriceDisplay = document.createElement("p");
-        cartPriceDisplay.innerText = `$${addPrice / 100}`;
-        cartProductPriceHolder.appendChild(cartPriceDisplay); 
-
-        newTotal += parseInt(addPrice) / 100;
+                // newCartObject.quantity = 1;
+                // cartProductQuantity.innerText = newCartObject.quantity;
+                cart.push(newCartObject);
+                // generate price box in shopping cart overlay
+                cartPriceDisplay = document.createElement("p");
+                cartPriceDisplay.innerText = `$${(addPrice / 100).toFixed(2)}`;
+                cartProductPriceHolder.appendChild(cartPriceDisplay);
+                // updating total on checkout display
+                checkOutTotalDisplay.innerText = cartPriceDisplay.innerText;
+                // generate name box
+                let cartItemNameDisplay = document.createElement("p");
+                cartItemNameDisplay.setAttribute("class", "name-in-cart")
+                cartItemNameDisplay.innerText = addName;
+                cartNameHolder.appendChild(cartItemNameDisplay);
+            };    
+       
+        console.log(cart);
+    
+        // totals math
+        newTotal += addPrice / 100;
         let taxTotal = .06 * newTotal;
         let grandTotal = newTotal + taxTotal;
 
         // All totals display
-        subTotal.innerText = `Subtotal: $${newTotal}`;
+        subTotal.innerText = `Subtotal: $${newTotal.toFixed(2)}`;
         tax.innerText = `Tax: $${taxTotal.toFixed(2)}`;
-        total.innerText = `Total $${grandTotal}`;
-        cartSubTotal.innerText = `Subtotal: $${newTotal}`;
-        cartTax.innerText = `Tax: $${taxTotal}`;
-        cartTotal.innerText = `Total $${grandTotal}`;
+        total.innerText = `Total $${grandTotal.toFixed(2)}`;
+        cartSubTotal.innerText = `Subtotal: $${newTotal.toFixed(2)}`;
+        cartTax.innerText = `Tax: $${taxTotal.toFixed(2)}`;
+        cartTotal.innerText = `Total: $${grandTotal.toFixed(2)}`;
+        checkOutTotalDisplay.innerText = total.innerText;
+        checkOutTaxDisplay.innerText = tax.innerText;
+        checkOutSubtotalDisplay.innerText = subTotal.innerText; 
+    };            
+
+        
+
+        
+
+
+});
+
+// add to cart event
+// right.addEventListener("click", (event) => {
+//     if (event.target.classList.contains("add-to-cart")){
+//         const addPrice = event.target.getAttribute("data-price")
+//         const addName = event.target.getAttribute("data-name");
+//         let newCartObject = {}
+//             newCartObject.name = addName;
+//             newCartObject.price = addPrice;
+//             // placeholder below --- needs wiring
+//             let alreadyInCart = false;
+//             for (item of cart){
+//                 if (addName === item.name){
+//                     alreadyInCart = true
+//                     item.quantity++;
+//                     break;
+//                 };
+//             }
+            
+//             if (alreadyInCart == false){
+//                 newCartObject.quantity = 1;
+//                 cart.push(newCartObject);
+                
+//             };
+//             console.log(cart);
+//         // increase quantity for item multiples
+        
+
+//         // NEEDS FURTHER WIRING AND INSPECTION
+//     //     let i = document.getElementByClass("cart-product-quantity").innerText;
+//     //     function addtocart() {
+//     //       i++;
+//     //     document.getElementByClass(' cart-product-quantity ').innerText = i;
+//     // }
+
+
+//         // generate name box
+//         let cartItemNameDisplay = document.createElement("p");
+//         cartItemNameDisplay.innerText = addName;
+//         cartNameHolder.appendChild(cartItemNameDisplay);
+
+//          // generate quantity box
+//          let cartQuantityContainer = document.querySelector(".cart-change-quantity-container");
+//          let cartQuantity = document.querySelector(".cart-change-quantity");
+//          let quantityBox = cartQuantity.cloneNode(true);
+//          cartQuantityContainer.appendChild(quantityBox);
+
+//         // generate price box
+//         let cartPriceDisplay = document.createElement("p");
+//         cartPriceDisplay.innerText = `$${addPrice / 100}`;
+//         cartProductPriceHolder.appendChild(cartPriceDisplay); 
+
+//         newTotal += parseInt(addPrice) / 100;
+//         let taxTotal = .06 * newTotal;
+//         let grandTotal = newTotal + taxTotal;
+
+//         // All totals display
+//         subTotal.innerText = `Subtotal: $${newTotal}`;
+//         tax.innerText = `Tax: $${taxTotal.toFixed(2)}`;
+//         total.innerText = `Total $${grandTotal}`;
+//         cartSubTotal.innerText = `Subtotal: $${newTotal}`;
+//         cartTax.innerText = `Tax: $${taxTotal}`;
+//         cartTotal.innerText = `Total $${grandTotal}`;
 
 
     
     
         
 
-    }
-    // add slected item Name & price to cart
+//     }
+//     // add slected item Name & price to cart
 
-})
+// })
 
 // CARD VALIDATION???
 // function validateCardNumber(number) {

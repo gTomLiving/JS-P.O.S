@@ -110,7 +110,7 @@ right.addEventListener("click", (event) => {
         
         // increase quantity for item multiples in cart array
         // also prevents from creating new cart array object
-         let alreadyInCart = false;
+        let alreadyInCart = false;
 
         // GENERATE QUANTITY BOXES FOR SHOPPING CART
         // create quantity box variables && appends for shopping cart display
@@ -139,10 +139,16 @@ right.addEventListener("click", (event) => {
                     alreadyInCart = true
                     item.quantity++;
                     let newItemPrice = parseInt(item.quantity) * parseInt(addPrice / 100).toFixed(2);
+                    cartProductQuantityCreator.innerText = item.quantity;
 
                     // ****ASK KYLE WHY CART QUANTITY BOX WON"T UPDATE****
-                    // console.log(cartProductQuantity);
+                    console.log(cartProductQuantity);
                     // cartProductQuantity.innerText = item.quantity;
+                    console.log(cartProductQuantityCreator.innerText);
+
+                    let boxQuantity = event.target.querySelector(".cart-product-quantity");
+                    console.log(boxQuantity);
+                    // boxQuantity.innerText = item.quantity;
                         
                     
                     cartPriceDisplay.innerText = `$${newItemPrice.toFixed(2)}`;
@@ -155,9 +161,10 @@ right.addEventListener("click", (event) => {
             if (alreadyInCart == false){
                 // insert quantity boxes into shopping cart
                 cartQuantityContainer.appendChild(createBox);      
-        
-                // newCartObject.quantity = 1;
+                // cartProductQuantity = document.querySelector(".cart-product-quantity");
+                newCartObject.quantity = 1;
                 // cartProductQuantity.innerText = newCartObject.quantity;
+                // console.log(cartProductQuantity.innerText);
                 cart.push(newCartObject);
                 // generate price box in shopping cart overlay
                 cartPriceDisplay = document.createElement("p");

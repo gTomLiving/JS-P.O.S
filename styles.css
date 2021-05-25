@@ -578,7 +578,40 @@ body {
   text-shadow: .25rem .25rem 1rem rgb(75, 75, 75, .5);
 }
 
+.receipt {
+ 
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+  background: linear-gradient(
+      to right bottom,
+  rgba(255,255,255,0.4),
+  rgba(255,255,255,0.7));
+  width: 95vw;
+  height: 60vh;
+  backdrop-filter: blur(1rem);
+  border-radius: .5rem;
+  transition: all 1s ease-in-out;
+  animation: MoveUpDown .7s linear;
+  position: absolute;
+  top: 15%; 
+  box-shadow: 10rem 10rem 10rem 8rem rgba(75,75,75,0.62);
+  z-index: 8;
 
+}
+.receipt-column {
+  display: flex;
+  
+}
+.receipt-item-name, .receipt-item-quantity{
+  display: flex;
+  flex-direction: column;
+}
 
 
 

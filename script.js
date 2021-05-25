@@ -41,6 +41,12 @@ let checkOutTaxDisplay = document.querySelector(".final-check-out-tax");
 let checkOutSubtotalDisplay = document.querySelector(".final-check-out-subtotal");
 let checkOutCashInput = document.querySelector("#cash");
 let checkOutChangeDisplay = document.querySelector(".change");
+let checkOutBtn = document.querySelector('.final-check-out-button');
+
+//receipt 
+let receiptName = document.querySelector('.receipt-item-name');
+let receiptQuantity = document.querySelector('.receipt-item-quantity');
+let receipt = document.querySelector('.receipt-container');
 
 
 
@@ -94,6 +100,37 @@ checkoutMenu.addEventListener("click", (event) => {
         checkoutMenu.classList.toggle("check-out-menu");
         shoppingCart.classList.toggle("shopping-cart");
     };
+    if(event.target.classList.contains('final-check-out-button')) {
+        event.preventDefault();
+        receipt.classList.add('receipt');
+        let formData = new FormData();
+
+        formData.append('Grand Total', `${total.innerText}`);
+        formData.append('tax', `${tax.innerText}`);
+        formData.append('total', `${newTotal}`);
+        
+        
+
+        for(item of cart) {
+            let itemReceipt = document.createElement('p');
+            let itemQuantity = document.createElement('p');
+            itemReceipt.innerText = `${item.name}`;
+            receiptName.appendChild(itemReceipt);
+
+
+            itemQuantity.innerText = `${item.quantity}`;
+            receiptQuantity.appendChild(itemQuantity);
+        }
+        
+        
+        
+        console.log(formData.get('total'));
+        console.log(formData.get('tax'));
+        console.log(formData.get('Grand Total'));
+
+        console.log(checkOutCashInput.value);
+
+    }
 });
 
 // add to cart event
@@ -196,6 +233,19 @@ right.addEventListener("click", (event) => {
         checkOutTotalDisplay.innerText = total.innerText;
         checkOutTaxDisplay.innerText = tax.innerText;
         checkOutSubtotalDisplay.innerText = subTotal.innerText; 
+
+        // let formData = new FormData();
+
+        // formData.append('total', `${newTotal}`);
+        // formData.append('tax', `${taxTotal}`);
+        // formData.append('Grand Total', `${grandTotal}`);
+        
+        // console.log(formData.get('total'));
+        // console.log(formData.get('tax'));
+        // console.log(formData.get('Grand Total'));
+
+        
+        
     };            
 
         
@@ -204,6 +254,7 @@ right.addEventListener("click", (event) => {
 
 
 });
+
 
 // add to cart event
 // right.addEventListener("click", (event) => {

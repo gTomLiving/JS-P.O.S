@@ -10,7 +10,6 @@
   color: #303030;
 }
 
-/* currently not on anything but possibly put onto .cartCard? */
 .hidden, .checkout-hidden {
   max-height: 150rem;
   display: none;
@@ -208,8 +207,7 @@ body {
   overflow: hidden;
   height: 20rem;
   width: 15rem;
-  /* bottom radius seems to be inactive --- why? */
-  border-radius: .5rem .5rem .5rem .5rem;
+  border-radius: .5rem .5rem 0 0;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
@@ -258,7 +256,7 @@ body {
   flex-direction: column;
   position: relative;
   margin-top: .5rem;
-  border-radius: 0 0 .5rem .5rem;
+  /* border-radius: 0 0 .5rem .5rem; */
   /* overflow: hidden; */
   /* overflow: scroll; */
   /* margin: 3rem; */
@@ -356,8 +354,8 @@ body {
 }
 
 .back-to-store {
-  width: 100%;
-  align-self: flex-end;
+  width: auto;
+  align-self: center;
   margin-top: 0;
   cursor: pointer;
 }
@@ -422,7 +420,7 @@ body {
 
 .cart-totals * {
   text-align: left;
-  margin-left: 1rem;
+  margin: .20rem 0 .20rem 1rem;
 }
 
 .check-out-button {
@@ -467,19 +465,21 @@ body {
   rgba(255,255,255,0.4),
   rgba(255,255,255,0.7));
   width: 95vw;
-  height: 60vh;
+  min-height: 60vh;
+  max-height: 100vh;
   backdrop-filter: blur(1rem);
   border-radius: .5rem;
   transition: all 1s ease-in-out;
   animation: MoveUpDown .7s linear;
   position: absolute;
-  top: 15%; 
+  top: 10%; 
   box-shadow: 10rem 10rem 10rem 8rem rgba(75,75,75,0.62);
+  overflow: scroll;
   z-index: 8;
 }
 
-.tender-type {
-  font-size: 1.1rem;
+#tender-type {
+  font-size: 1.15rem;
   text-align: center;
 
 }
@@ -492,8 +492,7 @@ body {
   justify-content: flex-start;
   min-width: 10rem;
   max-width: 17rem;
-  margin-top: 1rem;
-
+  margin: 1rem 0 .2rem;
 }
 
 .final-check-out-tax, .final-check-out-subtotal {
@@ -507,6 +506,7 @@ body {
   margin: .10rem;
   text-align: left;
 }
+
 
 .change-button {
   display: flex;
@@ -539,11 +539,16 @@ body {
   margin-top: 0;
   text-align: center;
   font-weight: bolder;
+  font-size: 1.25rem;
 }
 
 
 .tender-type-card {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+#cvv-label {
+  margin-left: 30px;
 }
 
 .final-check-out-button {
@@ -579,38 +584,94 @@ body {
 }
 
 .receipt {
- 
   display: flex;
   flex-direction: column;
   align-self: center;
   justify-self: center;
-  align-items: center;
-  justify-content: center;
+  align-items:center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   padding: 1rem;
   background: linear-gradient(
       to right bottom,
   rgba(255,255,255,0.4),
   rgba(255,255,255,0.7));
-  width: 95vw;
-  height: 60vh;
+  width: 70vw;
+  min-height: 60vh;
+  max-height: 100vh;
   backdrop-filter: blur(1rem);
   border-radius: .5rem;
   transition: all 1s ease-in-out;
   animation: MoveUpDown .7s linear;
   position: absolute;
-  top: 15%; 
+  top: 8%; 
   box-shadow: 10rem 10rem 10rem 8rem rgba(75,75,75,0.62);
-  z-index: 8;
-
+  z-index: 9;
+  overflow: scroll;
 }
+ .receipt-header {
+   justify-self: flex-start;
+   align-self: center;
+   /* height: 5rem; */
+ }
 .receipt-column {
   display: flex;
-  
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  height: 25rem;
+  text-align: left;
 }
 .receipt-item-name, .receipt-item-quantity{
   display: flex;
   flex-direction: column;
+  flex: 1;
+}
+
+.receipt-item-name {
+  flex: 3;
+}
+
+.receipt-item-name p {
+  align-self: flex-start;
+  text-align: left;
+  margin: .3rem 0;
+  height: 2rem;
+}
+
+.receipt-item-quantity p {
+  margin: .3rem 0;
+  height: 2rem;
+}
+
+.receipt-totals {
+  display: flex;
+  justify-self: flex-end;
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.receipt-totals p {
+  margin: .1rem 0;
+}
+
+.on-cash-or-card {
+  font-weight: bold;
+  text-align: center;
+}
+
+.receipt-close {
+  text-align: center;
+  font-size: 1.25rem;
+  transition: all 1s ease-out;
+  cursor: pointer;
+  padding: 0 2rem;
+
+}
+
+.receipt-close:hover {
+  transform: scale(1.10);
+  text-shadow: .25rem .25rem 1rem rgb(75, 75, 75, .5);
 }
 
 
@@ -632,7 +693,14 @@ margin: 0;
       width: 100%;
   }
 
+  .check-out-menu, .receipt {
+    top: 15%;
+  }
+  
+
 }
+
+
 
 
 
@@ -805,10 +873,10 @@ margin: 0;
       margin: 0 1.25rem 0 0;
   }
 
-  .back-to-store {
-      width: 10rem;
+  /* .back-to-store {
+      width: auto;
       text-align: center;
-  }
+  } */
 
   .slideUp{
       animation-name: slideUp;

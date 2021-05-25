@@ -38,7 +38,7 @@
                     <h2 class="card-header">Dead Sea Scrolls</h2>
                     <img class="card-image" src="./images-final/scrolls-resize-no-ratio.jpg" alt="dead sea scrolls">
                     <h3 class="card-price">$1.50</h3>
-                    <button type="button" class="add-to-cart-button" data-price="150" data-name="The Dead Sea Scrolls">Add to Cart</button>
+                    <button type="button" class="add-to-cart-button" data-price="150" data-name="Dead Sea Scrolls">Add to Cart</button>
                     <div class="description-box">
                         <h5 id="description-header">Description</h5>
                         <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quia inventore quisquam quod repudiandae necessitatibus molestias. Alias vero beatae sed. Ut aliquam dolor sed blanditiis ipsam vel veniam rem cupiditate?</p>
@@ -206,21 +206,32 @@
             <div class="tender-type-card">
                 <label for="card">Card Number:</label><br>
                 <input type="number" id="card" name="card" placeholder="000000000000000000"><br>
+                <label for="month day year" id="card-exp-date" name="month" >Exp. Date:</label>
                 <label for="cvv" id="cvv-label">CVV:</label><br>
-                <input type="number" id="cvv" name="cvv" placeholder="000"><br>
+                <input type="number" id="month" name="month" maxlength="2" style="width: 1.5rem">
+                <input type="number" id="day" name="day" maxlength="2" style="width: 1.5rem">
+                <input type="number" id="year" name="year" maxlength="4" style="width: 3rem">   
+                <input type="number" size=4 id="cvv" name="cvv" placeholder="000" style="width: 3rem">
+                
             </div>
             <button class="final-check-out-button" type="submit">Submit Payment</button>
             <p class="back-to-cart">Back to Store</p>
     
         </form>
     </div>
-    <div class=" receipt-container hidden">
+    <div class="receipt-container hidden">
         <h1 class="receipt-header">Receipt</h1>
         <div class="receipt-column">
             <section class="receipt-item-name">Items</section>
             <section class="receipt-item-quantity">Quantity</section>
         </div>
-        <section class="receipt-total">Total</section>
+        <section class="receipt-totals">
+            <p class="receipt-subtotal">Subtotal:</p>
+            <p class="receipt-tax">Tax:</p>
+            <p class="receipt-total">Total:</p>
+            <p class="on-cash-or-card">placeholder:</p>    
+        </section>
+        <p class="receipt-close">Close</p>
 
 
 

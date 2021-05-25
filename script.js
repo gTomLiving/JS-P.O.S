@@ -122,8 +122,6 @@ checkoutMenu.addEventListener("click", (event) => {
             receiptQuantity.appendChild(itemQuantity);
         }
         
-        
-        
         console.log(formData.get('total'));
         console.log(formData.get('tax'));
         console.log(formData.get('Grand Total'));

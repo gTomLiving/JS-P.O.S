@@ -43,6 +43,13 @@ let checkOutCashInput = document.querySelector("#cash");
 let checkOutChangeDisplay = document.querySelector(".change");
 let checkOutBtn = document.querySelector('.final-check-out-button');
 
+// CC validation variables
+let ccNumberInput = document.querySelector("#card");
+let ccMonthInput = document.querySelector("#month");
+let ccDayInput = document.querySelector("#day");
+let ccYearInput = document.querySelector("#year");
+let cvvInput = document.querySelector("#cvv");
+
 //receipt 
 let receipt = document.querySelector('.receipt-container');
 let receiptName = document.querySelector('.receipt-item-name');
@@ -66,12 +73,14 @@ shoppingCart.addEventListener("click", (event) => {
 
     // TODO Figure out how to make add subtract quantity buttons work -- maybe change event target focus to larger?
     if (event.target.classList.contains("subtract")){
-        // alert("Newly Created Website, Excuse our dust.");    
+        // alert text copied from GC website
+        alert("Newly Created Website, excuse our dust.");    
         console.log("trying to subtract");
     };
 
     if (event.target.classList.contains("add")){
-        // alert("Newly Created Website, Excuse our dust.");
+        // alert text copied from GC website
+        alert("Newly Created Website, excuse our dust.");
         console.log("trying to add")
     };
 })
@@ -110,6 +119,7 @@ checkoutMenu.addEventListener("click", (event) => {
     // finishes checkout process & generates receipt
     if(event.target.classList.contains('final-check-out-button')) {
         event.preventDefault();
+        
         // generates receipt overlay
         receipt.classList.add('receipt');
         
@@ -123,15 +133,25 @@ checkoutMenu.addEventListener("click", (event) => {
         receiptSubtotal.innerText = `Subtotal: ${formData.get('total')}`;
         receiptTax.innerText = `${formData.get('tax')}`;
         receiptTotal.innerText = `${formData.get('Grand Total')}`;
+        
         // for cash or card display switch
         let cashGiven = checkOutCashInput.value;
         let receiptChange = cashGiven - (newTotal * 1.06);
+
         // cash or card functions
         let cashOption = () => receiptCashOrCard.innerText = `Change: ${receiptChange.toFixed(2)}`;
-        let cardOption = () => receiptCashOrCard.innerText = `These numbers are accepted.`
+        let cardAccepted = () => receiptCashOrCard.innerText = `These numbers are accepted.`;
+        function cardFailed(){
+            receiptCashOrCard.innerText = `No coin, no wares, Traveler. Be gone with you.`;
+            console.log("validation process failed");
+        }
+        
         // ternary to change bottom receipt display
-        cashGiven == 0 ? cardOption() : cashOption();
-       
+        // cashGiven == 0 ? cardAccepted() : cashOption();
+        const ccNums = [3, 4, 5, 6];
+        cashGiven == 0 ? ccValidation() : cashOption();
+
+
         // fills in cart items to receipt overlay
         for(item of cart) {
             let itemReceipt = document.createElement('p');
@@ -141,6 +161,65 @@ checkoutMenu.addEventListener("click", (event) => {
             itemQuantity.innerText = `${item.quantity}`;
             receiptQuantity.appendChild(itemQuantity);
         };
+        
+        // CC validation function
+        function ccValidation(){
+            // cc num variable checks
+            let firstCardNumPassed = false;
+            let cardLengthPassed = false;
+            let expDatePassed = false;
+            let cvvPassed = false;
+            let finalCheck = false;
+            // check first num on cc
+            if (ccNumberInput.value[0] == ccNums[0] || ccNums[1] || ccNums[2] || ccNums[3]){
+                firstCardNumPassed = true;
+                console.log(firstCardNumPassed);
+            }else{
+                alert("You've made a mistake, traveller.");
+                cardFailed();
+                return;
+            };
+            // check proper card length
+            if (ccNumberInput.value.length >= 13 && ccNumberInput.value.length <= 16){
+                cardLengthPassed = true;
+                console.log("success")
+            }else{
+                console.log("fail")
+               alert("Traveller, do you know how numbers work?");
+               cardFailed();
+               return;
+            };
+            // check date inputs
+            if (ccMonthInput.value >= 1 &&  ccMonthInput.value <= 12){
+                console.log("month correct");
+                console.log(ccMonthInput.value);
+                if (ccDayInput.value >= 1 && ccDayInput.value <= 31){
+                    console.log("day correct");
+                    if (ccYearInput.value.length == 4){
+                        console.log("date sequence passed");
+                        expDatePassed = true;
+                    }
+                };
+            }else{
+                alert("Traveler, hast thou coin instead?");
+                cardFailed();
+                return;
+            }
+            // check CVV inputs
+            if (cvvInput.value.length >= 3 && cvvInput.value.length <= 4){
+                console.log("cvv passed")
+                cvvPassed = true;
+                finalCheck = true;
+            }else{
+                console.log("cvv failed");
+                alert("No wares if no coin, Traveler.");
+                cardFailed();
+                return;
+            }
+            
+            // all values true?
+            finalCheck == true ? cardAccepted() : cardFailed();
+        }
     }
 });
 
@@ -176,7 +255,7 @@ right.addEventListener("click", (event) => {
         // add right arrow to box
         let rightArrow = document.createElement("i");
         rightArrow.setAttribute("class", "ib ib-mdi-arrow-right-circle add");
-        createBox.appendChild(rightArrow);    
+        createBox.appendChild(rightArrow); 
 
         // updates cart values for repeat items without creating new line
         for (item of cart){
@@ -187,7 +266,6 @@ right.addEventListener("click", (event) => {
                 cartProductQuantityCreator.innerText = item.quantity;
 
                 // ****CART QUANTITY BOX WON"T UPDATE BUT aspects are working in background****
-                // create NodeList to correlate and match with item.quantity? --- see paper note
                 console.log(cartProductQuantityCreator);
                 
                 console.log(cartProductQuantityCreator.innerText);
@@ -200,7 +278,7 @@ right.addEventListener("click", (event) => {
                 // updating total on checkout display
                 checkOutTotalDisplay.innerText = cartPriceDisplay.innerText;
                 // TEST AREA
-                
+
                 // TEST AREA
                 break;
             };        
@@ -208,19 +286,20 @@ right.addEventListener("click", (event) => {
 
         // updates cart values for new objects and creates new shopping cart overlay displays
         if (alreadyInCart == false){
+            
             // insert quantity boxes into shopping cart
             cartQuantityContainer.appendChild(createBox);      
-            // cartProductQuantity = document.querySelector(".cart-product-quantity");
             newCartObject.quantity = 1;
-            // cartProductQuantity.innerText = newCartObject.quantity;
-            // console.log(cartProductQuantity.innerText);
             cart.push(newCartObject);
+            
             // generate price box in shopping cart overlay
             cartPriceDisplay = document.createElement("p");
             cartPriceDisplay.innerText = `$${(addPrice / 100).toFixed(2)}`;
             cartProductPriceHolder.appendChild(cartPriceDisplay);
+            
             // updating total on checkout display
             checkOutTotalDisplay.innerText = cartPriceDisplay.innerText;
+            
             // generate name box
             let cartItemNameDisplay = document.createElement("p");
             cartItemNameDisplay.setAttribute("class", "name-in-cart")
@@ -235,7 +314,7 @@ right.addEventListener("click", (event) => {
         let taxTotal = .06 * newTotal;
         let grandTotal = newTotal + taxTotal;
 
-        // All totals display
+        // all totals display
         subTotal.innerText = `Subtotal: $${newTotal.toFixed(2)}`;
         tax.innerText = `Tax: $${taxTotal.toFixed(2)}`;
         total.innerText = `Total: $${grandTotal.toFixed(2)}`;
@@ -246,20 +325,9 @@ right.addEventListener("click", (event) => {
         checkOutTaxDisplay.innerText = tax.innerText;
         checkOutSubtotalDisplay.innerText = subTotal.innerText; 
 
-        // let formData = new FormData();
-
-        // formData.append('total', `${newTotal}`);
-        // formData.append('tax', `${taxTotal}`);
-        // formData.append('Grand Total', `${grandTotal}`);
-        
-        // console.log(formData.get('total'));
-        // console.log(formData.get('tax'));
-        // console.log(formData.get('Grand Total'));
-
-        
-        
     };
     
+    // toggles description overlay on product cards
     if (event.target.classList.contains("description-box")){
         event.target.classList.toggle("description-box-click");
         console.log("toggle works");
@@ -275,125 +343,10 @@ right.addEventListener("click", (event) => {
 // closes receipt and resets page
 receipt.addEventListener("click", (event) => {
     if (event.target.classList.contains("receipt-close")){
-        // event.target.classList.add("hidden");
         location.reload();
     }
 })
 
-
-// add to cart event
-// right.addEventListener("click", (event) => {
-//     if (event.target.classList.contains("add-to-cart")){
-//         const addPrice = event.target.getAttribute("data-price")
-//         const addName = event.target.getAttribute("data-name");
-//         let newCartObject = {}
-//             newCartObject.name = addName;
-//             newCartObject.price = addPrice;
-//             // placeholder below --- needs wiring
-//             let alreadyInCart = false;
-//             for (item of cart){
-//                 if (addName === item.name){
-//                     alreadyInCart = true
-//                     item.quantity++;
-//                     break;
-//                 };
-//             }
-            
-//             if (alreadyInCart == false){
-//                 newCartObject.quantity = 1;
-//                 cart.push(newCartObject);
-                
-//             };
-//             console.log(cart);
-//         // increase quantity for item multiples
-        
-
-//         // NEEDS FURTHER WIRING AND INSPECTION
-//     //     let i = document.getElementByClass("cart-product-quantity").innerText;
-//     //     function addtocart() {
-//     //       i++;
-//     //     document.getElementByClass(' cart-product-quantity ').innerText = i;
-//     // }
-
-
-//         // generate name box
-//         let cartItemNameDisplay = document.createElement("p");
-//         cartItemNameDisplay.innerText = addName;
-//         cartNameHolder.appendChild(cartItemNameDisplay);
-
-//          // generate quantity box
-//          let cartQuantityContainer = document.querySelector(".cart-change-quantity-container");
-//          let cartQuantity = document.querySelector(".cart-change-quantity");
-//          let quantityBox = cartQuantity.cloneNode(true);
-//          cartQuantityContainer.appendChild(quantityBox);
-
-//         // generate price box
-//         let cartPriceDisplay = document.createElement("p");
-//         cartPriceDisplay.innerText = `$${addPrice / 100}`;
-//         cartProductPriceHolder.appendChild(cartPriceDisplay); 
-
-//         newTotal += parseInt(addPrice) / 100;
-//         let taxTotal = .06 * newTotal;
-//         let grandTotal = newTotal + taxTotal;
-
-//         // All totals display
-//         subTotal.innerText = `Subtotal: $${newTotal}`;
-//         tax.innerText = `Tax: $${taxTotal.toFixed(2)}`;
-//         total.innerText = `Total $${grandTotal}`;
-//         cartSubTotal.innerText = `Subtotal: $${newTotal}`;
-//         cartTax.innerText = `Tax: $${taxTotal}`;
-//         cartTotal.innerText = `Total $${grandTotal}`;
-
-
-    
-    
-        
-
-//     }
-//     // add slected item Name & price to cart
-
-// })
-
-// CARD VALIDATION???
-// function validateCardNumber(number) {
-//     var regex = new RegExp("^[0-9]{16}$");
-//     if (!regex.test(number))
-//         return false;
-
-//     return luhnCheck(number);
-// }
-
-// function luhnCheck(val) {
-//     var sum = 0;
-//     for (var i = 0; i < val.length; i++) {
-//         var intVal = parseInt(val.substr(i, 1));
-//         if (i % 2 == 0) {
-//             intVal *= 2;
-//             if (intVal > 9) {
-//                 intVal = 1 + (intVal % 10);
-//             }
-//         }
-//         sum += intVal;
-//     }
-//     return (sum % 10) == 0;
-// }
-
-// ALTERNATE CC VAL?
-// function validate_creditcardnumber()
-// {
-
-// let re16digit=/^\d{16}$/
-// if (document.myform.CreditCardNumber.value.search(re16digit)==-1)
-// alert("Please enter your 16 digit credit card numbers");
-// return false;
-
-// }
-
-// document.myform.CreditCardNumber.onchange = validate_creditcardnumber;
-
-// <form name="myform">
-//     <input name="CreditCardNumber" />
-// </form>
 
 
 

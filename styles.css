@@ -31,7 +31,6 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* height: auto; */
   width: 90%;
 }
 
@@ -212,17 +211,14 @@ rgba(255,255,255,0.2));
   border-radius: .5rem;
   box-shadow: .2rem .2rem 1rem rgb(40, 40, 40, 0.5);
   margin-top: .5rem;
-  /* transition: .6s; */
   transition: all .6s ease-out;
 }
 
 .add-to-cart-button:hover {
   transform: scale(1.10);
-  /* transition: .6s; */
-  /* text-shadow: .25rem .25rem 2rem #000; */
   box-shadow: 1rem 1rem 1rem rgb(40, 40, 40, 0.5);
   z-index: 5;
-}
+}  
 
 .add-to-cart-button:active {
   transform: scale(1.0);
@@ -616,8 +612,8 @@ rgba(255,255,255,0.2));
  .receipt-header {
    justify-self: flex-start;
    align-self: center;
-   /* height: 5rem; */
- }
+
+}
 .receipt-column {
   display: flex;
   align-items: flex-start;
@@ -771,12 +767,12 @@ margin: 0;
   }
 
   .view-cart {
-  padding: 1rem;
-  width: 60%;
-  top: 63%;
-  left: 10%;
-  display: flex;
-  margin-bottom: .5rem;
+    padding: 1rem;
+    width: 60%;
+    top: 63%;
+    left: 10%;
+    display: flex;
+    margin-bottom: .5rem;
 
   }
 
@@ -854,7 +850,7 @@ margin: 0;
 
 }
 
-/* Below is styling for shopping cart add/subtract buttons */
+/* Below is styling for shopping cart add/subtract buttons and the only thing that's not actually our group's code */
 .ib::before{
   display: inline-block;
   height: 1em;

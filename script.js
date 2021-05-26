@@ -1,7 +1,4 @@
-//Grab items from the page .document
 
-//When product is clicked description leaves and the product is placed is the cart 
-//and added to the total
 
 // grab left side things
 let subTotal = document.querySelector(".sub-total");
@@ -13,8 +10,6 @@ let newTotal = 0;
 
 // grabbing description box for animation
 let descriptionBox = document.querySelector(".description-box");
-
-
 
 // add to cart process
 let right = document.querySelector(".right");
@@ -35,6 +30,7 @@ let cartPriceDisplay = document.createElement("p");
 
 // cart quantity container variables
 let cartQuantityContainer = document.querySelector(".cart-change-quantity-container");
+let cartQuantityContainerNodeList = document.querySelectorAll(".cart-change-quantity-container");
 const shoppingCart = document.querySelector(".hidden");
 let cartQuantity = document.querySelector(".cart-change-quantity");
 
@@ -57,19 +53,6 @@ let receiptTax = document.querySelector(".receipt-tax");
 let receiptTotal = document.querySelector(".receipt-total");
 let receiptCashOrCard = document.querySelector(".on-cash-or-card");
 
-
-// toggle description box animations on click
-// descriptionBox.addEventListener("click", (event) => {
-    // if (event.target.classList.contains("description-animation")){
-    //     console.log("listener works");
-    //     descriptionBox.classList.toggle("description-box-click");
-    //     console.log("toggle works");
-    // };
-// })
-
-
-
-
 // toggles checkoutmenu visibility
 shoppingCart.addEventListener("click", (event) => {
     if (event.target.classList.contains("check-out-button")){
@@ -81,13 +64,14 @@ shoppingCart.addEventListener("click", (event) => {
         shoppingCart.classList.toggle("shopping-cart");
     };
 
-    // TODO Figure out how to make add subtract quantity buttons work -- maybe change event target focus to larger? does shopping cart z index affect?
+    // TODO Figure out how to make add subtract quantity buttons work -- maybe change event target focus to larger?
     if (event.target.classList.contains("subtract")){
-            
+        // alert("Newly Created Website, Excuse our dust.");    
         console.log("trying to subtract");
     };
 
     if (event.target.classList.contains("add")){
+        // alert("Newly Created Website, Excuse our dust.");
         console.log("trying to add")
     };
 })
@@ -106,11 +90,15 @@ checkoutMenu.addEventListener("click", (event) => {
         let newTotal = 0;
         for (item of cart){
             newTotal += (((parseInt(item.price) * item.quantity) / 100) * 1.06);
-            let cashGiven = checkOutCashInput.value;
-            let changeDisplay = cashGiven - newTotal;
-            checkOutChangeDisplay.innerText = `Change: $${changeDisplay.toFixed(2)}`;
-
         };
+
+        let cashGiven = checkOutCashInput.value;
+        let changeDisplay = cashGiven - newTotal;
+        checkOutChangeDisplay.innerText = `Change: $${changeDisplay.toFixed(2)}`;
+            if (cashGiven < newTotal) {
+                alert("Traveler better have my money.")
+            };
+
     };
 
     // back to store 
@@ -208,10 +196,12 @@ right.addEventListener("click", (event) => {
                 // console.log(boxQuantity.innerText);
                 // boxQuantity.innerText = item.quantity;
                     
-                
                 cartPriceDisplay.innerText = `$${newItemPrice.toFixed(2)}`;
                 // updating total on checkout display
                 checkOutTotalDisplay.innerText = cartPriceDisplay.innerText;
+                // TEST AREA
+                
+                // TEST AREA
                 break;
             };        
         }; 

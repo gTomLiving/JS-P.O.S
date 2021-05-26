@@ -11,6 +11,10 @@ let viewCart = document.querySelector(".view-cart");
 let addToCart = document.querySelectorAll(".addToCart");
 let newTotal = 0;
 
+// grabbing description box for animation
+let descriptionBox = document.querySelector(".description-box");
+
+
 
 // add to cart process
 let right = document.querySelector(".right");
@@ -52,6 +56,17 @@ let receiptSubtotal = document.querySelector(".receipt-subtotal");
 let receiptTax = document.querySelector(".receipt-tax");
 let receiptTotal = document.querySelector(".receipt-total");
 let receiptCashOrCard = document.querySelector(".on-cash-or-card");
+
+
+// toggle description box animations on click
+// descriptionBox.addEventListener("click", (event) => {
+    // if (event.target.classList.contains("description-animation")){
+    //     console.log("listener works");
+    //     descriptionBox.classList.toggle("description-box-click");
+    //     console.log("toggle works");
+    // };
+// })
+
 
 
 
@@ -253,7 +268,12 @@ right.addEventListener("click", (event) => {
 
         
         
-    };            
+    };
+    
+    if (event.target.classList.contains("description-box")){
+        event.target.classList.toggle("description-box-click");
+        console.log("toggle works");
+    };
 
         
 

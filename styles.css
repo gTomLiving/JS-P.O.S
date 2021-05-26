@@ -43,10 +43,7 @@ input {
 
 input:focus {
   background: #F3F7F7;
-  /* HOW TO GET RID OF BORDER? */
-  border: none;
 }
-
 
 h1 {
   font-size: 1.10rem;
@@ -120,15 +117,6 @@ body {
 
 .check-out-totals {
   display: none;
-  margin-top: 4rem;
-  align-self: flex-start;
-  margin-right: 3rem;
-}
-
-.subtotal .tax .total {
-  display: none;
-  text-align: left;
-  margin: 4rem 0;
 }
 
 .view-cart {
@@ -156,7 +144,6 @@ body {
 }
 
 .view-cart-text {
-  margin: 0;
   display: none;
 }
 
@@ -171,21 +158,22 @@ body {
     to right bottom,
 rgba(255,255,255,0.5),
 rgba(255,255,255,0.2));
-box-shadow: .2rem 1rem 1rem 1rem; rgba(103, 102, 122, 0.2);
+  box-shadow: .2rem 1rem 1rem 1rem rgba(40, 40, 40, 0.2);
 }
 
 .greeting {
   margin: 6.25rem 0 3.125rem 0;
+  padding: 0 0 0 .5rem;
 
 }
 
 .disclaimer {
-  margin: 2.1875rem 0 0 0;
-  padding-top: .625rem;
+  margin: 2.1875rem 0 0 .2rem;
+  padding-top: 6rem;
   display: flex;
   align-self: center;
   justify-self: flex-start;
-  font-size: .5rem;
+  font-size: .4rem;
   letter-spacing: .005px;
 }
 
@@ -199,8 +187,7 @@ box-shadow: .2rem 1rem 1rem 1rem; rgba(103, 102, 122, 0.2);
           to right bottom,
       rgba(255,255,255,0.5),
       rgba(255,255,255,0.2));
-  box-shadow: .2rem 1rem .5rem rgba(103, 102, 122, 0.2);
-     
+  box-shadow: .2rem 1rem .5rem rgba(40,40,40, 0.2);   
   position: sticky;
   top:0;
   z-index: 3;
@@ -244,7 +231,6 @@ box-shadow: .2rem 1rem 1rem 1rem; rgba(103, 102, 122, 0.2);
   justify-content: center;
   align-items: center;
   flex: 3;
-  /* overflow: scroll; */
   height: fit-content;
   position: relative;
   z-index: 2;
@@ -259,7 +245,7 @@ box-shadow: .2rem 1rem 1rem 1rem; rgba(103, 102, 122, 0.2);
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  box-shadow: .5rem .5rem 2rem rgba(103, 102, 122, 0.2);
+  box-shadow: .5rem .5rem 2rem rgba(40,40,40, 0.2);
   margin: .75rem .75rem .75rem .75rem;
   background: linear-gradient(
       to right bottom,
@@ -273,29 +259,14 @@ box-shadow: .2rem 1rem 1rem 1rem; rgba(103, 102, 122, 0.2);
   margin: .5rem 0;
 }
 .products-card:hover {
-  /* transition: all 1s ease-out; */
   transform: scale(1.15);
-  
-  box-shadow: 4rem 4rem 8rem rgba(54, 54, 65, 0.8);
+  box-shadow: 4rem 4rem 8rem rgba(40, 40, 40, 0.8);
   background: linear-gradient(
       to right bottom,
   rgba(255,255,255, 0.7),
   rgba(255,255,255, 0.4));
-  /* height: auto; */
-  /* overflow: hidden; */
   z-index: 5;
-  /* maybe cut if animation won't work */
 }
-
-/* animation setup */
-/* @keyframes card-drop {
-  from {
-      transform:scale(1.25);
-  }
-  to {
-      transform:scaleY(3.333);
-  }
-} */
 
 .description-box {
   display: flex;
@@ -304,66 +275,35 @@ box-shadow: .2rem 1rem 1rem 1rem; rgba(103, 102, 122, 0.2);
   flex-direction: column;
   position: relative;
   margin-top: .5rem;
-  /* border-radius: 0 0 .5rem .5rem; */
-  /* overflow: hidden; */
-  /* overflow: scroll; */
-  /* margin: 3rem; */
-  /* animation attempt */
-  /* background: rgba(255,255,255, .5); */
   background: linear-gradient(
       to right bottom,
   rgba(255,255,255, 0.5),
   rgba(255,255,255,0.2));
   backdrop-filter: blur(1rem);
-/* overflow: hidden; */
-/* line-height: 50px; */
   transition: all 1s ease-in-out;
-/* height: 20rem; */
-  box-shadow: 0rem 0rem 3rem 1rem rgba(54, 54, 65, 0.2);
+  box-shadow: 0rem 0rem 3rem 1rem rgba(40,40,40, 0.2);
 }
 
 .description-header {
   max-height: 1rem;
 }
 
+/* controls description box animation - toggles with js */
 .description-box-click {
   height: 20rem;
-  /* position: absolute; */
   padding: .5rem;
-  /* transition: all 1s ease-in-out; */
-  /* margin-bottom: 20rem; */
-
-  /* transition: all .5s ease-in-out; */
-  /* z-index: 10; */
-
-  /* transform: scale(1.10);
-  transition: .6s;
-  text-shadow: .25rem .25rem 2rem #000; */
-  /* transition: margin-bottom 5s;
-  transition: padding-bottom 2s .5s;
-  overflow: visible;
-  animation-name: card-drop;
-  animation-direction: normal;
-  animation-delay: 1s;
-  animation-duration: 3s;
-  animation-timing-function: ease; */
   animation: MoveUpDown .7s linear;
   position: absolute;
-  /* left: 0;
-  bottom: 0; */
 }
 
 .description-box:hover {
   cursor: pointer;
   transform: scaleY(1.04);
-  box-shadow: 1rem -5rem 5rem .5rem rgba(54, 54, 65, 0.2);
+  box-shadow: 1rem -5rem 5rem .5rem rgba(40,40,40, 0.2);
 
 }
 
-/* .description {
-  visibility: hidden;
-} */
-/* test 2 */
+/* actual animation for description cards */
 @keyframes MoveUpDown {
   0%, 100% {
     transform: translateY(50%);
@@ -372,7 +312,6 @@ box-shadow: .2rem 1rem 1rem 1rem; rgba(103, 102, 122, 0.2);
     transform: translateY(0px);
   }
 }
-
 
 .card-image {
   height: 79px;
@@ -384,16 +323,8 @@ box-shadow: .2rem 1rem 1rem 1rem; rgba(103, 102, 122, 0.2);
   position: fixed;
   box-sizing: border-box;
   top: 14%;
-  /* min-height: 79%; */
   display: flex;
   flex-direction: column;
-  /* transform: translate(-50%, -50%); */
-  /* position: relative; */
-  /* z-index: 1; */
-  /* align-self: flex-start;
-  justify-self: flex-start; */
-  /* margin: auto; */
-  /* transition: ease-in 1s; */
   background: rgb(255, 255, 255);
   background: linear-gradient(
       to right bottom,
@@ -500,12 +431,12 @@ box-shadow: .2rem 1rem 1rem 1rem; rgba(103, 102, 122, 0.2);
 .check-out-button:hover {
   transform: scale(1.10);
   transition: .6s;
-  box-shadow: 1rem 1rem 1rem rgb(75, 75, 75, .5);
+  box-shadow: 1rem 1rem 1rem rgb(40,40,40, .5);
 }
 
 .check-out-button:active {
   transform: scale(1.0);
-  box-shadow: .5rem .5rem 1rem rgb(75, 75, 75, .5);
+  box-shadow: .5rem .5rem 1rem rgb(40,40,40, .5);
 }
 
 .check-out-menu {
@@ -530,7 +461,7 @@ box-shadow: .2rem 1rem 1rem 1rem; rgba(103, 102, 122, 0.2);
   animation: MoveUpDown .7s linear;
   position: absolute;
   top: 10%; 
-  box-shadow: 10rem 10rem 10rem 8rem rgba(75,75,75,0.62);
+  box-shadow: 10rem 10rem 10rem 8rem rgba(40,40,40,0.62);
   overflow: scroll;
   z-index: 8;
 }
@@ -585,12 +516,12 @@ box-shadow: .2rem 1rem 1rem 1rem; rgba(103, 102, 122, 0.2);
 .change-button:hover {
   transform: scale(1.10);
   transition: .6s;
-  box-shadow: 1rem 1rem 1rem rgb(75, 75, 75, .5);
+  box-shadow: 1rem 1rem 1rem rgb(40, 40, 40, .5);
 }
 
-.cange-button:active {
+.change-button:active {
   transform: scale(1.0);
-  box-shadow: .5rem .5rem 1rem rgb(75, 75, 75, .5);
+  box-shadow: .5rem .5rem 1rem rgb(40, 40, 40, 0.5);
 }
 
 .change {
@@ -628,7 +559,12 @@ box-shadow: .2rem 1rem 1rem 1rem; rgba(103, 102, 122, 0.2);
 .final-check-out-button:hover {
   transform: scale(1.10);
   transition: .6s;
-  box-shadow: 1rem 1rem 1rem rgb(75, 75, 75, .5);
+  box-shadow: 1rem 1rem 1rem rgb(40,40,40, .5);
+}
+
+.final-check-out-button:active {
+  transform: scale(1.0);
+  box-shadow: .5rem .5rem 1rem rgb(40, 40, 40, 0.5);
 }
 
 .back-to-cart {
@@ -640,7 +576,7 @@ box-shadow: .2rem 1rem 1rem 1rem; rgba(103, 102, 122, 0.2);
 
 .back-to-cart:hover {
   transform: scale(1.10);
-  text-shadow: .25rem .25rem 1rem rgb(75, 75, 75, .5);
+  text-shadow: .25rem .25rem 1rem rgb(40,40,40, .5);
 }
 
 .receipt {
@@ -665,7 +601,7 @@ box-shadow: .2rem 1rem 1rem 1rem; rgba(103, 102, 122, 0.2);
   animation: MoveUpDown .7s linear;
   position: absolute;
   top: 8%; 
-  box-shadow: 10rem 10rem 10rem 8rem rgba(75,75,75,0.62);
+  box-shadow: 0 10rem 10rem 8rem rgba(40, 40, 40, .5);
   z-index: 9;
   overflow: scroll;
 }
@@ -731,7 +667,7 @@ box-shadow: .2rem 1rem 1rem 1rem; rgba(103, 102, 122, 0.2);
 
 .receipt-close:hover {
   transform: scale(1.10);
-  text-shadow: .25rem .25rem 1rem rgb(75, 75, 75, .5);
+  text-shadow: .25rem .25rem 1rem rgb(40,40,40,40, .5);
 }
 
 
@@ -756,6 +692,14 @@ margin: 0;
   .check-out-menu, .receipt {
     top: 15%;
   }
+
+  .receipt {
+    top: 10%;
+  }
+
+  .receipt-totals{
+    flex-direction: column;
+  }
   
 
 }
@@ -766,43 +710,11 @@ margin: 0;
 
 
 @media only screen and (min-width: 900px){    
-  .categories{
-      width: 100%;
-      height: 2rem;
-      margin: 0;
-
-  }
-
+  
   section {
-      display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      align-content: center;
       height: 100%;
   }
-
-  a {
-      text-decoration: none;
-  }
-
-
-  h1 {
-      font-size: 1.10rem;
-      font-weight: bold;
-      text-align: center;
-      margin-top: 2rem;
-  }
-
-  h2 {
-      font-size: 1.50rem;
-      text-align: center;
-  }
-
-  h5 {
-      margin-top: .33rem;
-  }
-
-
 
   .main {     
       width: 60vw;
@@ -812,160 +724,130 @@ margin: 0;
   
 
   .left {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      box-sizing:border-box;
-      /* flex: 1; */
-      position: fixed;
-      top: 7.5%;
-      z-index: 5;
-      max-height: 85vh;
-      width: 15rem;
-      border-radius: 1rem 0 0 1rem;
-      height: 100%;
-      padding: 2rem;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    top: 7.5%;
+    z-index: 5;
+    max-height: 85vh;
+    width: 15rem;
+    border-radius: 1rem 0 0 1rem;
+    height: 100%;
+    padding: 2rem;
   }
 
   .check-out-totals {
-      display: flex;
-      flex-direction: column;
-      margin-top: 4rem;
-      align-self: flex-start;
-      margin-right: 0rem;
-      width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+    align-self: flex-start;
+    margin-right: 0rem;
+    width: 100%;
   }
 
   .sub-total, .tax, .total {
-      text-align: left;
-      margin: .5rem 0;
+    text-align: left;
+    margin: .5rem 0;
   }
 
   .sub-total, .tax {
     font-size: 1.2rem;
   }
 
-  total {
+  .total {
     font-size: 1.3rem;
   }
 
   .store-name-box {
-      padding-bottom: 2rem;
+    padding-bottom: 2rem;
   }
 
   .view-cart {
-      border-radius: .5rem;
-      padding: 1rem;
-      width: 60%;
-      top: 63%;
-      left: 10%;
-      display: flex;
-      margin-bottom: .5rem;
+  padding: 1rem;
+  width: 60%;
+  top: 63%;
+  left: 10%;
+  display: flex;
+  margin-bottom: .5rem;
 
   }
 
-  .view-cart:hover {
-      transition: .4s;
-      box-shadow: .05rem .05rem 2rem rgb(75, 75, 75, .5);
-  }
-
-  .view-cart:active {
-      transform: scale(1.0);
-      box-shadow: .5rem .5rem 1rem rgb(75, 75, 75, .5);
-  }
-
+  
   .view-cart-text {
-      display: flex;
-      margin: 0;
+    display: flex;
+    margin: 0;
+  }
+
+  .disclaimer {
+    margin: 0;
   }
 
 
   .products-header {
-      padding: 80px 0 8px 0;
-      margin: 0 0 1rem 0;
-      width: 100%;
-      background: linear-gradient(
-              to right bottom,
-          rgba(255,255,255,0.5),
-          rgba(255,255,255,0.2));
-      box-shadow: .2rem .2rem .5rem rgba(103, 102, 122, 0.2);  
-      position: sticky;
-      top:0;
-      z-index: 3;
-      backdrop-filter: blur(1rem);  
+    padding: 80px 0 8px 0;
+    margin: 0 0 1rem 0;
+    width: 100%;
+    position: sticky;
   }
 
   
-
   .right {
-      display: flex;
-      /* flex-wrap: wrap; */
-      flex-direction: column;
-      justify-content: space-around;
-      margin-left: 15rem;
-  }
-
-  section{
-      /* margin-left: 13.5rem; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 15rem;
   }
 
   .shopping-cart {
-      position: fixed;
-      top: 12%;
-      min-width: 40vw;
-      max-width: 45vw;
-      height: 46.6rem;
-      box-shadow: 0 0 3rem 10rem rgba(75,75,75,0.3);
+    position: fixed;
+    top: 12%;
+    min-width: 40vw;
+    max-width: 45vw;
+    height: 46.6rem;
+    box-shadow: 0 0 3rem 10rem rgba(40,40,40,0.3);
   }
 
   .cart-totals {
-      margin-left: 1rem;
-      width: 10rem;
-      bottom: .25rem;
+    margin-left: 1rem;
+    width: 10rem;
+    bottom: .25rem;
   }
 
   .check-out-menu {
-      width: 50vw;
-      height: 60vh;
-      backdrop-filter: blur(1rem);
-      border-radius: .5rem;
-      box-shadow: 0 0 3rem 10rem rgba(75,75,75,0.3);
-      z-index: 8;
+    width: 50vw;
+    height: 60vh;
+    backdrop-filter: blur(1rem);
+    border-radius: .5rem;
+    box-shadow: 0 0 3rem 10rem rgba(40,40,40, 0.3);
+    z-index: 8;
   }
 
   .check-out-button{
-      align-self: flex-end;
-      margin: 0 1.25rem 0 0;
+    align-self: flex-end;
+    margin: 0 1.25rem 0 0;
   }
 
-  /* .back-to-store {
-      width: auto;
-      text-align: center;
-  } */
-
   .slideUp{
-      animation-name: slideUp;
-      -webkit-animation-name: slideUp;	
+    animation-name: slideUp;
+    -webkit-animation-name: slideUp;	
 
-      animation-duration: 1s;	
-      -webkit-animation-duration: 1s;
+    animation-duration: 1s;	
+    -webkit-animation-duration: 1s;
 
-      animation-timing-function: ease;	
-      -webkit-animation-timing-function: ease;
+    animation-timing-function: ease;	
+    -webkit-animation-timing-function: ease;
 
-      visibility: visible !important;			
+    visibility: visible !important;			
+  }
+
+  .receipt{
+    max-width: 40vw;
   }
 
   
 
 }
-
-/* This .ib class includes the minimum necessary CSS properties for icon display
-* Additional size, transform and animation classes are available in icon-blender.css
-* Available from https://github.com/icon-blender/icon-blender
-*/
-
+/* Below is styling for shopping cart add/subtract buttons */
 .ib::before{
   display: inline-block;
   height: 1em;

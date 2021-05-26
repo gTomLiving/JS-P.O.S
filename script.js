@@ -216,7 +216,6 @@ checkoutMenu.addEventListener("click", (event) => {
                 cardFailed();
                 return;
             }
-            
             // all values true?
             finalCheck == true ? cardAccepted() : cardFailed();
         }
@@ -267,19 +266,12 @@ right.addEventListener("click", (event) => {
 
                 // ****CART QUANTITY BOX WON"T UPDATE BUT aspects are working in background****
                 console.log(cartProductQuantityCreator);
-                
                 console.log(cartProductQuantityCreator.innerText);
-                // cartProductQuantity.innerText = item.quantity;
-                let boxQuantity = event.target.querySelector(".cart-product-quantity");
-                // console.log(boxQuantity.innerText);
-                // boxQuantity.innerText = item.quantity;
-                    
+                // above to be fixed later 
+
                 cartPriceDisplay.innerText = `$${newItemPrice.toFixed(2)}`;
                 // updating total on checkout display
                 checkOutTotalDisplay.innerText = cartPriceDisplay.innerText;
-                // TEST AREA
-
-                // TEST AREA
                 break;
             };        
         }; 
